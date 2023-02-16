@@ -19,12 +19,8 @@ pipeline {
         stage("List Azure VMs") {
             steps {
                 script {
-                    def azCliPath = tool 'Azure CLI'
-                    withEnv(["PATH+AZCLI=${azCliPath}/bin"]) {
-                        sh "az login --service-principal -u ${AZURE_CLIENT_ID} -p ${AZURE_CLIENT_SECRET} --tenant ${AZURE_TENANT}"
-                        sh "az account set --subscription ${AZURE_SUBSCRIPTION}"
-                        sh "az vm list"
-                    }
+                    sh "az vm list"                
+                    debug "Virtual machine search completed successfully"
                 }
             }
         }
