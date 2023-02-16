@@ -1,0 +1,22 @@
+name: Jenkins
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Jenkins Pipeline
+      uses: appleboy/jenkins-action@master
+      with:
+        url: ${{ secrets.JENKINS_URL }}
+        username: ${{ secrets.JENKINS_USERNAME }}
+        password: ${{ secrets.JENKINS_PASSWORD }}
+        token: ${{ secrets.JENKINS_TOKEN }}
+        job: your-job-name
