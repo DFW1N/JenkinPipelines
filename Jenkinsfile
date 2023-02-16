@@ -16,21 +16,4 @@ pipeline {
             }
         }
         
-        stage("Connect to Azure") {
-            steps {
-                withCredentials([
-                    usernamePassword(credentialsId: 'AZURE_CLIENT_SECRET', usernameVariable: 'AZURE_CLIENT_ID', passwordVariable: 'AZURE_CLIENT_SECRET')
-                ]) {
-                    sh "az login --service-principal -u ${AZURE_CLIENT_ID} -p ${AZURE_CLIENT_SECRET} --tenant ${AZURE_TENANT}"
-                    sh "az account set --subscription ${AZURE_SUBSCRIPTION}"
-                }
-            }
-        }
-        
-        stage("Search for Virtual Machines") {
-            steps {
-                sh "az vm list"
-            }
-        }
-    }
 }
