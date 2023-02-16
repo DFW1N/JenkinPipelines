@@ -9,6 +9,13 @@ pipeline {
     }
     
     stages {
+        
+         stage("Debug") {
+            steps {
+                sh "echo AZURE_TENANT = ${AZURE_TENANT}"
+            }
+        }
+        
         stage("Connect to Azure") {
             steps {
                 withCredentials([
