@@ -9,11 +9,9 @@ pipeline {
     }
     
     stages {
-        
-         stage("Debug") {
+        stage("Debug") {
             steps {
                 sh "echo AZURE_TENANT = ${AZURE_TENANT}"
             }
         }
-        
 }
