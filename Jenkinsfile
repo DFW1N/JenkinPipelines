@@ -9,6 +9,8 @@ pipeline {
         stage("Debug") {
             steps {
                 script {
+                    sh "sudo apt-get update && sudo apt-get install -y jq" // Install jq on Debian-based system
+
                     def azureTenant = sh(
                         returnStdout: true,
                         script: "curl -s -H \"Authorization: token ${GITHUB_TOKEN}\" ${env.GITHUB_SERVER_URL}/repos/${env.GITHUB_REPOSITORY}/actions/secrets/AZURE_TENANT | jq -r '.value'"
