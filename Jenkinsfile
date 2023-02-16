@@ -14,4 +14,5 @@ pipeline {
                 sh "echo AZURE_TENANT = ${AZURE_TENANT}"
             }
         }
+    }
 }
