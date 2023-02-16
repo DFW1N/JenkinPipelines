@@ -1,5 +1,10 @@
 pipeline {
     agent any
+ 
+    tools {
+        // Install Azure CLI tool
+        azureCli 'Azure CLI'
+    }
     
     environment {
         AZURE_SUBSCRIPTION = "${GITHUB_SECRET_NAME_AZURE_SUBSCRIPTION}"
